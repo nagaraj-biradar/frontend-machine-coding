@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.show_modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aqua;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.modal-wrapper {
+  position: fixed;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
+  padding: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 99999;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: x-large;
+  color: black;
+}
+
+.modal-close {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: gainsboro;
+  line-height: 32px;
+  font-size: 1.2em;
+  padding-left: 10px;
+}
+
+.modal-close:hover {
+  background-color: red;
+  color: white;
+}
+
+.modal-backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 0;
+}
+
+@keyframes slide {
+  from {
+    transform: translate(-50%, -100%);
+  }
+
+  to {
+    transform: translate(-50%, -50%);
+  }
+}
+
+.modal-wrapper.active {
+  animation-name: slide;
+  animation-duration: 0.35s;
+}
+
+.image-listing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.image-listing>div {
+  flex: 1 33%;
+  padding: 5px;
+  width: 33%;
+}
+
+.image-listing>div img {
+  width: 100%;
+  border: 2px solid gray;
+  cursor: pointer;
+}
+
+.image-listing>div.active img {
+  border: 2px solid skyblue;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.image-slide>img {
+  width: 100%;
+  display: none;
+}
+
+.image-slide>img.active {
+  display: block;
+  animation-name: fade;
+  animation-duration: 0.75s;
+}
+
+.next {
+  right: 20px;
+}
+
+.prev {
+  left: 20px;
+}
+
+.image-navigation {
+  position: absolute;
+  top: 50%;
+  font-size: 3em;
+  transform: translateY(-30%);
+  cursor: pointer;
+}
